@@ -1,0 +1,15 @@
+volumes:
+  postgres-volume:
+
+services:
+  management-parking-db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: d3v@J$%*28
+      POSTGRES_USER: admin
+      POSTGRES_DB: management_parking_db
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
