@@ -16,5 +16,5 @@ public class CityDto {
     private String name;
     private String code;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<ParkingFacility> parkingFacilitiesList;
+    private List<ParkingFacilityDto> parkingFacilitiesList;
 }

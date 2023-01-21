@@ -21,7 +21,7 @@ public class ParkingFacility {
     @Id
     @NotBlank
     private String id;
-    @Column(name="name",length = 256)
+    @Column(name="name",length = 256,unique = true)
     @Length(max=256,message = "Name can not have more than 256 characters!")
     private String name;
 
@@ -35,4 +35,5 @@ public class ParkingFacility {
 
     @OneToMany(mappedBy = "parkingFacility")
     private List<Vehicle> vehicle;
+
 }
