@@ -13,7 +13,7 @@ public class Vehicle {
     @Id
     @Column(name="id")
     private String id;
-    @JoinColumn(name="city")
+
     @ManyToOne
     private City city;
     @Column(name="vehicle_type")
@@ -21,6 +21,5 @@ public class Vehicle {
     @Column(name="isParked")
     private Boolean isParked;
     @ManyToOne
-    @JoinColumn(name="parking_facility_id")
     private ParkingFacility parkingFacility;
 }
