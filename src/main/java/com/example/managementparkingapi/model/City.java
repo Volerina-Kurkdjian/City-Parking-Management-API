@@ -28,6 +28,6 @@ public class City {
     @Length(max = 4,message = "Code should not be longer than 4 characters!")
     private String code;
 
-    @OneToMany
+    @OneToMany(mappedBy = "city")
     private List<ParkingFacility> parkingFacilitiesList;
 }
