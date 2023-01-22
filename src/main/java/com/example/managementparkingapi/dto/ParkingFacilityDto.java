@@ -27,5 +27,5 @@ public class ParkingFacilityDto {
     private Integer availableCapacity;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<Vehicle> vehicle;
+    private List<VehicleDto> vehicle;
 }
