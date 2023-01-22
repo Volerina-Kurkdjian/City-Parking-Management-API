@@ -2,7 +2,6 @@ package com.example.managementparkingapi.controller;
 
 import com.example.managementparkingapi.dto.ParkingFacilityDto;
 import com.example.managementparkingapi.dto.VehicleDto;
-import com.example.managementparkingapi.service.ParkingFacilityService;
 import com.example.managementparkingapi.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class VehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(vehicleDtoTemporar);
     }
 
-    @GetMapping("/cities/{code}/vehicles")
+    @GetMapping(value = "/cities/{code}/vehicles")
     public ResponseEntity<List<VehicleDto>> getVehiclesByCityCode(@PathVariable String code){
         List<VehicleDto> vehicles= vehicleService.getVehiclesByCityCode(code);
         return ResponseEntity.status(HttpStatus.OK).body(vehicles);
@@ -36,5 +35,10 @@ public class VehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(parkedVehicleDto);
     }
 
+    @PutMapping("/vehicle/{vehicleId}")
+    public ResponseEntity<ParkingFacilityDto> unparkVehicle(@PathVariable String vehicleId){
+        ParkingFacilityDto parkedVehicleDto= vehicleService.unparkVehicle(vehicleId);
+        return ResponseEntity.status(HttpStatus.OK).body(parkedVehicleDto);
+    }
 
 }

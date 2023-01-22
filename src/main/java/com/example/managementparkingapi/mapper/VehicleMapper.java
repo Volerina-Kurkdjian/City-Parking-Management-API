@@ -4,9 +4,8 @@ import com.example.managementparkingapi.dto.CityDto;
 import com.example.managementparkingapi.dto.VehicleDto;
 import com.example.managementparkingapi.model.Vehicle;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring",uses = CityDto.class)
+@Mapper(componentModel = "spring",uses = CityMapper.class)
 public interface VehicleMapper {
 
     Vehicle map(VehicleDto vehicleDto);
