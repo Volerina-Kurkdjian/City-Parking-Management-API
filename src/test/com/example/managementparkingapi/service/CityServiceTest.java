@@ -14,8 +14,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -65,6 +66,24 @@ class CityServiceTest {
         when(cityMapper.map(any(City.class))).thenReturn(new CityDto());
         var cityResult= cityService.getCityById("123");
         assertNotNull(cityResult);
+    }
+
+    @Test
+    public void testGettingCityByCode(){
+        when(cityRepository.findByCode(anyString())).thenReturn(Optional.of(new City()));
+        when(cityMapper.map(any(City.class))).thenReturn(new CityDto());
+        var cityResult=cityService.getCityByCode("1234");
+        assertNotNull(cityResult);
+    }
+
+    @Test
+    public void testGetAllCities(){
+        List<City> cityList=new ArrayList<>();
+        City city=new City("1234","Navodari","222",null);
+        cityList.add(city);
+        when(cityRepository.findAll()).thenReturn(cityList);
+        var result=cityService.getAllCities();
+        assertNotNull(result);
     }
 
 
