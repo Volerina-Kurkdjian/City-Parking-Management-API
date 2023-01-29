@@ -4,7 +4,6 @@ import com.example.managementparkingapi.model.ParkingFacility;
 import com.example.managementparkingapi.model.VehicleType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data

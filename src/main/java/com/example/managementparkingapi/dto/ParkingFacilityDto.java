@@ -24,6 +24,7 @@ public class ParkingFacilityDto {
     private Integer capacity;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    //exista o annotare pentru a calcula dinamic daca mai e sau nu capacity
     private Integer availableCapacity;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

@@ -59,7 +59,7 @@ public class VehicleService {
     }
 
 
-    public ParkingFacilityDto parkVehicle(String parkingId, String vehicleId) {
+    public ParkingFacilityDto parkVehicle(String parkingId, String vehicleId) {//trebuie sa folosim synchronized
         Integer withoutCapacity = 0;
         ParkingFacilityDto parkingFacilityDto = parkingFacilityService.getParkingFacilityById(parkingId);
         Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -69,11 +69,11 @@ public class VehicleService {
         ParkingFacility parkingFacility = parkingFacilityMapper.map(parkingFacilityDto);
         vehicle.setIsParked(true);
         vehicle.setParkingFacility(parkingFacility);
-        vehicleRepository.save(vehicle);
-        parkingFacility.setAvailableCapacity(parkingFacility.getAvailableCapacity() - 1);
+        vehicleRepository.save(vehicle);//annotare transitional pe entity
         var parkedVehicles = parkingFacility.getVehicle();
         if(parkedVehicles.stream().noneMatch(v -> v.getId().equals(vehicle.getId()))){
             parkedVehicles.add(vehicle);
+            parkingFacility.setAvailableCapacity(parkingFacility.getAvailableCapacity() - 1);///here
         }
         parkingFacility.setVehicle(parkedVehicles);
         return parkingFacilityMapper.map(parkingFacilityRepository.save(parkingFacility));
